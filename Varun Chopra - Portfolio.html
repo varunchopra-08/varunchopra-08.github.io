@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varun Chopra - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --text-color: #334155;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+            scroll-margin-top: 80px;
+            position: relative;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .project-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -2;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .experience-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover .achievement-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.2));
+        }
+        
+        .contact-info-item {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .contact-info-item:hover {
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            top: -250px;
+            right: -250px;
+        }
+        
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(37, 99, 235, 0.1));
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        .highlight-box {
+            position: relative;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .progress-value {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 1.5s ease;
+        }
+        
+        .project-image {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+        
+        .nav-wrapper {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .blob-animation {
+            position: absolute;
+            top: 30%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            filter: blur(60px);
+            opacity: 0.3;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            animation: blob-move 15s infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes blob-move {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 40px) scale(0.9); }
+            75% { transform: translate(-40px, -30px) scale(1.2); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        
+        .rotate-animation {
+            animation: rotate 25s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+         
+            .nav-wrapper {
+                display: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                padding: 20px 0;
+            }
+            
+            a {
+                text-decoration: none;
+                color: var(--primary-color);
+            }
+            
+            .card {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+            }
+            
+            body {
+                background-color: white;
+            }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-wrapper fixed w-full bg-white shadow-md z-10">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-gradient">VC</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-700 transition">About</a>
+                    <a href="#education" class="nav-link text-gray-700 hover:text-blue-700 transition">Education</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-700 transition">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-blue-700 transition">Experience</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-700 transition">Projects</a>
+                    <a href="#achievements" class="nav-link text-gray-700 hover:text-blue-700 transition">Achievements</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-700 transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <i class="fas fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-700">About</a>
+                <a href="#education" class="block py-2 text-gray-700 hover:text-blue-700">Education</a>
+                <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-700">Skills</a>
+                <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-700">Experience</a>
+                <a href="#projects" class="block py-2 text-gray-700 hover:text-blue-700">Projects</a>
+                <a href="#achievements" class="block py-2 text-gray-700 hover:text-blue-700">Achievements</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-700">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section pt-32 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50 relative overflow-hidden">
+        <div class="blob-animation"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col-reverse md:flex-row items-center">
+                <div class="md:w-1/2 mt-10 md:mt-0" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gradient">Varun Chopra</h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Computer Science Engineer & Data Scientist</h2>
+                    <p class="text-gray-700 text-lg mb-8">
+                        Specializing in Data Science, Machine Learning, and AI-Powered Solutions. Building innovative software with a focus on cutting-edge technologies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn btn-primary">
+                            Get in Touch
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="w-64 h-64 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-lg relative overflow-hidden floating-element">
+                        <div class="absolute inset-0 opacity-20 rotate-animation">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#FFFFFF" d="M40.8,-68.3C54.7,-62.5,69,-53.8,76.4,-41.1C83.8,-28.5,84.2,-12,81.4,3.2C78.5,18.5,72.3,32.7,63.4,44.1C54.5,55.6,42.8,64.3,29.9,68.5C17,72.8,2.8,72.7,-10.5,69.6C-23.9,66.5,-36.5,60.3,-48.2,51.8C-59.9,43.3,-70.7,32.5,-76.6,18.9C-82.5,5.4,-83.5,-10.9,-79.1,-25.4C-74.6,-39.9,-64.6,-52.5,-51.8,-59.1C-39,-65.8,-23.3,-66.4,-8.6,-64.1C6.1,-61.9,27,-74,40.8,-68.3Z" transform="translate(100 100)" />
+                            </svg>
+                        </div>
+                        <span class="text-6xl text-white font-bold relative z-10">VC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">About Me</h2>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 pr-0 md:pr-10" data-aos="fade-right" data-aos-duration="1000">
+                    <h3 class="text-2xl font-semibold mb-4 text-gradient">Who I Am</h3>
+                    <p class="text-gray-700 mb-6">
+                        I'm a Computer Science Engineering student at Chandigarh University with a passion for developing innovative technology solutions. Currently pursuing a PG certificate program in Data Science and Machine Learning at IIT Roorkee, I'm dedicated to mastering the intersection of software development and AI.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        My technical journey spans from mobile app development with Flutter and Android to data-driven solutions using Machine Learning and GenAI. I'm particularly interested in creating AI-powered applications that solve real-world problems.
+                    </p>
+                    <div class="flex items-center space-x-6 mt-8">
+                        <a href="/cdn-cgi/l/email-protection#582e392a2d366a6a3b3037282a396860183f35393134763b3735" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="https://github.com/" target="_blank" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                    <h3 class="text-2xl font-semibold mb-4 text-gradient">My Focus Areas</h3>
+                    <div class="mb-6 transform transition-all duration-300 hover:translate-x-2">
+                        <div class="flex items-center mb-2">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-blue-600"></i>
+                            </div>
+                            <h4 class="text-xl font-medium">Data Science & Machine Learning</h4>
+                        </div>
+                        <p class="text-gray-700 pl-16">
+                            Developing predictive models and leveraging data-driven insights to solve complex problems.
+                        </p>
+                    </div>
+                    <div class="mb-6 transform transition-all duration-300 hover:translate-x-2">
+                        <div class="flex items-center mb-2">
+                            <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-robot text-indigo-600"></i>
+                            </div>
+                            <h4 class="text-xl font-medium">Generative AI & LLMs</h4>
+                        </div>
+                        <p class="text-gray-700 pl-16">
+                            Building applications powered by large language models and exploring the frontiers of generative AI.
+                        </p>
+                    </div>
+                    <div class="mb-6 transform transition-all duration-300 hover:translate-x-2">
+                        <div class="flex items-center mb-2">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-chart-bar text-purple-600"></i>
+                            </div>
+                            <h4 class="text-xl font-medium">Data Visualization & Power BI</h4>
+                        </div>
+                        <p class="text-gray-700 pl-16">
+                            Creating interactive dashboards and visualizations that transform data into actionable insights.
+                        </p>
+                    </div>
+                    <div class="mb-6 transform transition-all duration-300 hover:translate-x-2">
+                        <div class="flex items-center mb-2">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-link text-green-600"></i>
+                            </div>
+                            <h4 class="text-xl font-medium">Langchain & AI Integration</h4>
+                        </div>
+                        <p class="text-gray-700 pl-16">
+                            Connecting AI components to build powerful applications with enhanced capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section bg-gray-50 relative">
+        <div class="animated-bg"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Education</h2>
+            </div>
+            <div class="flex flex-col space-y-8">
+                <div class="bg-white p-6 rounded-xl shadow-md transition card" data-aos="fade-up" data-aos-duration="800">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gradient">IIT Roorkee</h3>
+                            <p class="text-gray-600 font-medium">PG Certificate Program in Data Science and Machine Learning</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">Feb 2025 - Sep 2025</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        Currently pursuing advanced studies in data science and machine learning techniques, including deep learning, statistical modeling, and AI applications.
+                    </p>
+                    <div class="mt-4 flex flex-wrap">
+                        <span class="skill-badge">Machine Learning</span>
+                        <span class="skill-badge">Deep Learning</span>
+                        <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md transition card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gradient">Chandigarh University</h3>
+                            <p class="text-gray-600 font-medium">Bachelor of Engineering in Computer Science</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">Graduation: May 2025</span>
+                            <p class="text-gray-600 font-medium mt-1">Cumulative GPA: 7.5/10</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        Studying computer science fundamentals, software engineering, data structures, algorithms, and specialized courses in AI and machine learning.
+                    </p>
+                    <div class="mt-4 flex flex-wrap">
+                        <span class="skill-badge">Computer Science</span>
+                        <span class="skill-badge">Software Engineering</span>
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Algorithms</span>
+                        <span class="skill-badge">AI Fundamentals</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md transition card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gradient">N.K. Bagrodia Public School</h3>
+                            <p class="text-gray-600 font-medium">Secondary (XII)</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">Graduated: Jul 2021</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        Completed secondary education with a focus on science and mathematics, laying the foundation for future technical studies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Technical Skills</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Data Science & ML Skills -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Data Science & ML</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Machine Learning Algorithms
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Statistical Analysis
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Predictive Modeling
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Data Preprocessing
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Neural Networks
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Classification & Regression
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- GenAI & LLMs Skills -->
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-indigo-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-robot text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-indigo-800">GenAI & LLMs</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Large Language Models
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Prompt Engineering
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            NLP Techniques
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            ChatGPT API Integration
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            RAG (Retrieval Augmented Generation)
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            AI-Powered Chatbots
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Power BI & Data Visualization -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-bar text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-800">Power BI & Data Visualization</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Interactive Dashboards
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Data Modeling
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            DAX Formulas
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Data Transformation
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Performance Optimization
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Report Design
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Langchain & AI Integration -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-link text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-800">Langchain & AI Integration</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Document QA Chains
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            LLM Integration
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Vector Databases
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Semantic Search
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Conversational Agents
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Multi-Modal Systems
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Programming & Frameworks -->
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-teal-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-teal-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-800">Programming & Frameworks</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Python (Pandas, NumPy, Scikit-learn)
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Flutter & Android
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            C++, SQL, Firebase
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            React, JavaScript
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            HTML & CSS
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Git & GitHub
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Other Technical Skills -->
+                <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-xl shadow-md card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-tools text-amber-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-amber-800">Other Technical Skills</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Object-Oriented Programming
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Database Management
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Software Development Life Cycle
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            API Integration
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Agile Methodologies
+                        </li>
+                        <li class="flex items-center transform transition-all duration-300 hover:translate-x-1">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            Problem Solving
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Work Experience</h2>
+            </div>
+            
+            <div class="flex flex-col space-y-10">
+                <!-- Woofurs Experience -->
+                <div class="experience-card bg-white p-8 rounded-xl shadow-md pl-10" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gradient">Woofurs</h3>
+                            <p class="text-gray-600 text-lg font-medium">Software Engineering Intern</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6 mt-6">
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-rocket text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">Platform Optimization</h4>
+                                <p class="text-gray-700">
+                                    Optimized platform performance and user experience, enhancing engagement through technical improvements and innovative solutions.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-paw text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">Feature Development</h4>
+                                <p class="text-gray-700">
+                                    Developed features linking pet parents to essential services and resources, creating a seamless experience for users seeking pet care solutions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-3">Technologies Used:</h4>
+                        <div class="flex flex-wrap">
+                            <span class="skill-badge">Web Development</span>
+                            <span class="skill-badge">UX Design</span>
+                            <span class="skill-badge">Frontend</span>
+                            <span class="skill-badge">Backend</span>
+                            <span class="skill-badge">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Planetcast Experience -->
+                <div class="experience-card bg-white p-8 rounded-xl shadow-md pl-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gradient">Planetcast Media Services Limited</h3>
+                            <p class="text-gray-600 text-lg font-medium">Software Intern</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium">July 2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6 mt-6">
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-code text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">Engineered and Optimized Software</h4>
+                                <p class="text-gray-700">
+                                    Developed and refined high-performance software applications, boosting system efficiency and enhancing user experience, leading to increased user satisfaction ratings.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-tasks text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">Spearheaded Project Phases</h4>
+                                <p class="text-gray-700">
+                                    Actively engaged in software development life cycle phases, ensuring on-time project delivery and a reduction in post-deployment issues.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-database text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">SQL Database Optimization</h4>
+                                <p class="text-gray-700">
+                                    Implemented efficient SQL queries and database structures, improving data retrieval speed and application performance.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-lightbulb text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-blue-800">ML Model Implementation</h4>
+                                <p class="text-gray-700">
+                                    Integrated machine learning models to enhance software capabilities, providing predictive features and intelligent automation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-semibold mb-3">Technologies Used:</h4>
+                        <div class="flex flex-wrap">
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">Machine Learning</span>
+                            <span class="skill-badge">Software Development</span>
+                            <span class="skill-badge">Data Analysis</span>
+                            <span class="skill-badge">User Experience</span>
+                            <span class="skill-badge">Project Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Projects</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-8">
+                    A selection of my recent projects showcasing my skills in Data Science, Machine Learning, GenAI, and application development.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Project 1: Zenzone -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="bg-gradient-to-r from-blue-400 to-indigo-500 h-3"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-gradient">Zenzone</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="GitHub Repository">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="Live Website">
+                                    <i class="fas fa-external-link-alt text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="inline-block px-3 py-1 mb-4 bg-blue-50 text-blue-800 rounded-full text-sm font-medium">A New way to discover the art of inner harmony</div>
+                        <p class="text-gray-700 mb-6">
+                            Pioneered the creation of a cutting-edge mental and physical wellbeing platform using modern development technologies and machine learning, driving an increase in average session duration and reducing the bounce rate.
+                        </p>
+                        <p class="text-gray-700 mb-6">
+                            Architected an AI-powered chatbot system that revolutionized customer interaction, slashing support tickets and elevating customer satisfaction.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-blue-800 mb-3">Key Features:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    AI-powered personalized wellness recommendations
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Intelligent chatbot using RAG/NLP for contextual support
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Cross-platform experience with React and Flutter
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Data-driven insights for personalized wellness journeys
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">RAG/NLP</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Generative AI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Aarogya -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="bg-gradient-to-r from-green-400 to-teal-500 h-3"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-gradient">Aarogya</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="GitHub Repository">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="Project Video">
+                                    <i class="fas fa-play-circle text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="inline-block px-3 py-1 mb-4 bg-green-50 text-green-800 rounded-full text-sm font-medium">Hospital Management System</div>
+                        <p class="text-gray-700 mb-6">
+                            Transformed healthcare connectivity with a multi-platform app for Hospitals, Doctors, Patients, leading to increase in appointment scheduling efficiency.
+                        </p>
+                        <p class="text-gray-700 mb-6">
+                            Created a cutting-edge healthcare app with increase in SOS ambulance booking efficiency, AI-driven doctor recommendations, and Health Chat GPT integration, optimizing user engagement and experience.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-green-800 mb-3">Key Features:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    AI-powered doctor recommendations based on symptoms
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Integrated ChatGPT API for health queries and assistance
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Emergency SOS ambulance booking system
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Comprehensive hospital management interface
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">ChatGPT API</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">LLM Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Attendify -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="bg-gradient-to-r from-purple-400 to-pink-500 h-3"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-gradient">Attendify</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="GitHub Repository">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="Project Video">
+                                    <i class="fas fa-play-circle text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="inline-block px-3 py-1 mb-4 bg-purple-50 text-purple-800 rounded-full text-sm font-medium">Mobile Attendance System</div>
+                        <p class="text-gray-700 mb-6">
+                            Engineered an offline-enabled attendance tracking solution, reducing manual input errors and saving hours daily.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-purple-800 mb-3">Key Features:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Offline/Online Attendance
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Excel Sheet Creation for data export
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    QR Scanning & Generation
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Comprehensive Attendance Tracker
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-purple-800 mb-3">Technologies Used:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Realm Database for offline storage
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Firebase for cloud synchronization
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Apache POI Library for Excel generation
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Android native platform
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Android</span>
+                            <span class="project-tag">RealM</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Mobile Development</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Data Science Portfolio Project -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-3"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold text-gradient">AI-Powered Document Analysis</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110" title="GitHub Repository">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="inline-block px-3 py-1 mb-4 bg-yellow-50 text-yellow-800 rounded-full text-sm font-medium">LLM-Based Document Processing System</div>
+                        <p class="text-gray-700 mb-6">
+                            Developed a comprehensive system that leverages LLMs and Langchain to extract, analyze, and summarize information from various document types, enabling efficient knowledge discovery and insights generation.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-yellow-800 mb-3">Key Features:</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Document parsing and semantic understanding
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Question-answering on document content
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Automated summary generation
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                                        <i class="fas fa-check text-green-600 text-xs"></i>
+                                    </div>
+                                    Interactive document exploration
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap">
+                            <span class="project-tag">Langchain</span>
+                            <span class="project-tag">LLMs</span>
+                            <span class="project-tag">NLP</span>
+                            <span class="project-tag">Vector Databases</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Achievements</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Best Project Award</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Recognized for exceptional project among 1000 submitted, demonstrating outstanding technical skills and innovative problem-solving.
+                    </p>
+                </div>
+                
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-medal text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">SIH Internal Hackathon</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Secured 2nd place out of 700 teams in the SIH Internal Hackathon competition, showcasing exceptional teamwork and technical expertise.
+                    </p>
+                </div>
+                
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-award text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">HackWithIndia</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Attained a top 15 standing among 1500 teams at HackWithIndia hosted at Microsoft Office Gurgaon, demonstrating competitive edge in a prestigious event.
+                    </p>
+                </div>
+                
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-star text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">PS1 at Chandigarh University</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Secured the #2 position in PS1 at Chandigarh University, showcasing exceptional skills and academic excellence among peers.
+                    </p>
+                </div>
+                
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-lightbulb text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">IDEATHON 2023</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Achieved a notable 4th position in the prestigious IDEATHON 2023, hosted by the esteemed Scriptogen Society, demonstrating innovative thinking.
+                    </p>
+                </div>
+                
+                <div class="achievement-card bg-white p-6 rounded-xl shadow-md transition card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <div class="achievement-icon">
+                            <i class="fas fa-certificate text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800">Certifications</h3>
+                    </div>
+                    <p class="text-gray-700">
+                        Completed high-value certifications including Certificate Program in Gen AI Fundamentals and The Complete Android 13 Developer Course, demonstrating commitment to continuous learning.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium hover:underline">View Credentials</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gradient-to-r from-blue-50 to-indigo-50 relative overflow-hidden">
+        <div class="blob-animation" style="opacity: 0.2;"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-3xl md:text-4xl font-bold section-title mx-auto">Contact Me</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-8">
+                    Interested in collaborating or discussing opportunities? Feel free to reach out to me.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-duration="1000">
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">Get In Touch</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="contact-info-item flex items-start rounded-lg p-4">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Email</h4>
+                                <a href="/cdn-cgi/l/email-protection#4a3c2b383f2478782922253a382b7a720a2d272b232664292527" class="text-blue-600 hover:underline">
+                                    <span class="__cf_email__" data-cfemail="6c1a0d1e19025e5e0f04031c1e0d5c542c0b010d0500420f0301">[email&#160;protected]</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item flex items-start rounded-lg p-4">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Phone</h4>
+                                <a href="tel:+918920365995" class="text-blue-600 hover:underline">
+                                    +91 8920365995
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item flex items-start rounded-lg p-4">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Location</h4>
+                                <p class="text-gray-700">New Delhi, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item flex items-start rounded-lg p-4">
+                            <div class="contact-info-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/" target="_blank" class="text-blue-600 hover:underline">
+                                    LinkedIn Profile
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item flex items-start rounded-lg p-4">
+                            <div class="contact-info-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">GitHub</h4>
+                                <a href="https://github.com/" target="_blank" class="text-blue-600 hover:underline">
+                                    GitHub Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 p-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+                    <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                    
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium mb-1">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-white text-blue-600 font-semibold py-3 px-4 rounded-lg hover:bg-gray-100 transition btn">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-800 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold text-gradient">Varun Chopra</h2>
+                    <p class="text-gray-300">Computer Science Engineer & Data Scientist</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="/cdn-cgi/l/email-protection#74021506011a4646171c1b040615444c341319151d185a171b19" class="text-gray-300 hover:text-white transition transform hover:scale-110">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/" target="_blank" class="text-gray-300 hover:text-white transition transform hover:scale-110">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="text-gray-300 hover:text-white transition transform hover:scale-110">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="tel:+918920365995" class="text-gray-300 hover:text-white transition transform hover:scale-110">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Varun Chopra. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            once: true,
+            disable: 'mobile'
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Add scroll event listener for active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active', 'text-blue-700', 'font-semibold');
+                item.classList.add('text-gray-700');
+                if (item.getAttribute('href') === `#${currentSection}`) {
+                    item.classList.remove('text-gray-700');
+                    item.classList.add('active', 'text-blue-700', 'font-semibold');
+                }
+            });
+        });
+        
+        // Animation for progress bars
+        const animateProgressBars = () => {
+            const progressBars = document.querySelectorAll('.progress-value');
+            progressBars.forEach(bar => {
+                const targetWidth = bar.getAttribute('data-width');
+                bar.style.width = targetWidth;
+            });
+        };
+        
+        // Run animations when content is in view
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(animateProgressBars, 500);
+        });
+    </script>
+</body>
+</html>
