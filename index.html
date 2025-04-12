@@ -405,7 +405,18 @@
                 background-color: white;
             }
         
-    </style>
+
+    
+    #toast {
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    #toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -492,7 +503,7 @@
                         My technical journey spans from mobile app development with Flutter and Android to data-driven solutions using Machine Learning and GenAI. I'm particularly interested in creating AI-powered applications that solve real-world problems.
                     </p>
                     <div class="flex items-center space-x-6 mt-8">
-                        <a href="/cdn-cgi/l/email-protection#582e392a2d366a6a3b3037282a396860183f35393134763b3735" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
+                        <a href="varun22chopra08@gmail.com" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
                             <i class="fas fa-envelope text-2xl"></i>
                         </a>
                         <a href="https://linkedin.com/in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition transform hover:scale-110">
@@ -1370,8 +1381,8 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">Email</h4>
-                                <a href="/cdn-cgi/l/email-protection#4a3c2b383f2478782922253a382b7a720a2d272b232664292527" class="text-blue-600 hover:underline">
-                                    <span class="__cf_email__" data-cfemail="6c1a0d1e19025e5e0f04031c1e0d5c542c0b010d0500420f0301">[email&#160;protected]</span>
+                                <a href="varun22chopra08@gmail.com" class="text-blue-600 hover:underline">
+                                    varun22chopra08@gmail.com
                                 </a>
                             </div>
                         </div>
@@ -1427,35 +1438,37 @@
                 <div class="md:w-1/2 p-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
                     <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
                     
-                    <form>
-                        <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="email" class="block text-sm font-medium mb-1">Your Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-white text-blue-600 font-semibold py-3 px-4 rounded-lg hover:bg-gray-100 transition btn">
-                            Send Message
-                        </button>
-                    </form>
+                    <form id="contact-form">
+    <div class="mb-4">
+        <label for="name" class="block text-sm font-medium mb-1">Your Name</label>
+        <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required>
+    </div>
+    <div class="mb-4">
+        <label for="email" class="block text-sm font-medium mb-1">Your Email</label>
+        <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required>
+    </div>
+    <div class="mb-4">
+        <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+        <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required>
+    </div>
+    <div class="mb-6">
+        <label for="message" class="block text-sm font-medium mb-1">Your Message</label>
+        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required></textarea>
+    </div>
+    <button type="submit" class="w-full bg-white text-blue-600 font-semibold py-3 px-4 rounded-lg hover:bg-gray-100 transition btn">
+        Send  Message
+    </button>
+</form>
+
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transition-opacity duration-300 opacity-0">
+        Message sent successfully!
+    </div>
 
     <!-- Footer -->
     <footer class="py-10 bg-gray-800 text-white">
@@ -1467,7 +1480,7 @@
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="/cdn-cgi/l/email-protection#74021506011a4646171c1b040615444c341319151d185a171b19" class="text-gray-300 hover:text-white transition transform hover:scale-110">
+                    <a href="varun22chopra08@gmail.com" class="text-gray-300 hover:text-white transition transform hover:scale-110">
                         <i class="fas fa-envelope text-xl"></i>
                     </a>
                     <a href="https://linkedin.com/in/" target="_blank" class="text-gray-300 hover:text-white transition transform hover:scale-110">
@@ -1489,7 +1502,36 @@
     </footer>
     
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
+    <!-- Include EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+    // Initialize EmailJS
+    emailjs.init("X1h-lPW7xnzmSyBZY"); // Replace with your EmailJS user ID
+
+    // Handle form submission
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Send email using EmailJS
+        emailjs.sendForm("service_dgoi7nx", "template_hrmeo1o", this)
+            .then(function () {
+                // Show toast notification
+                const toast = document.getElementById("toast");
+                toast.classList.remove("hidden");
+                toast.classList.add("show");
+
+                // Hide the toast after 3 seconds
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                    setTimeout(() => toast.classList.add("hidden"), 300);
+                }, 3000);
+            }, function (error) {
+                alert("Failed to send message. Please try again.");
+                console.error("Error:", error);
+            });
+    });
+    
         // Initialize AOS animation library
         AOS.init({
             once: true,
